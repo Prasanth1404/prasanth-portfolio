@@ -2,13 +2,14 @@ name: Deploy site
 
 on:
   push:
-    branches: [master]
+    branches: master]
     paths: ["site/**"]
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: prasanth-portfolio
 
     steps:
       - name: Checkout
@@ -24,16 +25,16 @@ jobs:
       - name: Upload files to S3
         run: |
           # HTML: always re-check so updates show at once
-          aws s3 sync site/ s3://${{ vars.S3_BUCKET }}/ --delete \
+          aws s3 sync site/ s3://${{ secrets.S3_BUCKET }}/ --delete \
             --exclude "*" --include "*.html" \
             --cache-control "no-cache"
           # Images, icons: cache for a day
-          aws s3 sync site/ s3://${{ vars.S3_BUCKET }}/ --delete \
+          aws s3 sync site/ s3://${{ secrets.S3_BUCKET }}/ --delete \
             --exclude "*.html" \
             --cache-control "public, max-age=86400"
 
       - name: Clear CloudFront cache
         run: |
           aws cloudfront create-invalidation \
-            --distribution-id ${{ vars.CF_DISTRIBUTION_ID }} \
+            --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} \
             --paths "/*"
