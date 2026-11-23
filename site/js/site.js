@@ -152,7 +152,17 @@
       box.innerHTML = "";
       box.appendChild(img);
     }
-    if (item.file) {
+    function generic() {
+      box.innerHTML = "";
+      var g = document.createElement("span");
+      g.className = "licon";
+      g.style.setProperty("--icon", "url(https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/icons/" + item.generic + ".svg)");
+      box.appendChild(g);
+      li.classList.add("is-generic");
+    }
+    if (item.generic) {
+      generic();
+    } else if (item.file) {
       var own = new Image();
       own.alt = "";
       own.onload = function () { box.innerHTML = ""; box.appendChild(own); };

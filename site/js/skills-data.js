@@ -1,6 +1,7 @@
 /*
   SKILLS DATA
   icon: a Simple Icons slug (https://simpleicons.org), shown in brand colour.
+  generic: a Lucide icon name (https://lucide.dev) for general concepts such as DNS or TLS.
   No icon? The tile shows short letters instead (set "short").
   To use your own logo file, put it in images/skills/<file> and set file: "<file>".
   For AWS and Azure services, download the official icon packs and save the SVGs here:
@@ -82,8 +83,8 @@ window.SKILLS = [
       { name: "Kubernetes", icon: "kubernetes", top: true },
       { name: "Helm", icon: "helm" },
       { name: "ingress-nginx", icon: "nginx" },
-      { name: "cert-manager", short: "CM" },
-      { name: "Sealed Secrets", short: "SS" }
+      { name: "cert-manager", short: "CM", file: "cert-manager.svg" },
+      { name: "Sealed Secrets", short: "SS", file: "sealed-secrets.svg" }
     ]
   },
   {
@@ -97,7 +98,7 @@ window.SKILLS = [
       { name: "CloudWatch", short: "CW", file: "aws-cloudwatch.svg" },
       { name: "Azure Monitor", short: "MON", file: "azure-monitor.svg" },
       { name: "Sentry", icon: "sentry" },
-      { name: "StatusCake", short: "SC" }
+      { name: "StatusCake", short: "SC", file: "statuscake.svg" }
     ]
   },
   {
@@ -106,11 +107,11 @@ window.SKILLS = [
     items: [
       { name: "Linux", icon: "linux", top: true },
       { name: "Ubuntu", icon: "ubuntu" },
-      { name: "Windows Server", short: "WS" },
+      { name: "Windows Server", short: "WS", file: "windows-server.svg" },
       { name: "Nginx", icon: "nginx", top: true },
       { name: "Apache", icon: "apache" },
-      { name: "HAProxy", short: "HA" },
-      { name: "OpenLiteSpeed", short: "OLS" },
+      { name: "HAProxy", short: "HA", file: "haproxy.svg" },
+      { name: "OpenLiteSpeed", short: "OLS", file: "openlitespeed.svg" },
       { name: "PM2", icon: "pm2" }
     ]
   },
@@ -118,16 +119,16 @@ window.SKILLS = [
     group: "Networking and security",
     tone: "sec",
     items: [
-      { name: "TCP/IP", short: "IP" },
-      { name: "DNS", short: "DNS" },
-      { name: "SSL/TLS", short: "TLS" },
+      { name: "TCP/IP", short: "IP", generic: "network" },
+      { name: "DNS", short: "DNS", generic: "globe" },
+      { name: "SSL/TLS", short: "TLS", generic: "lock" },
       { name: "Let's Encrypt", icon: "letsencrypt" },
       { name: "Certbot", icon: "letsencrypt" },
       { name: "OpenVPN", icon: "openvpn" },
       { name: "AWS Client VPN", short: "VPN", file: "aws-client-vpn.svg" },
-      { name: "WAF", short: "WAF" },
-      { name: "Backup and DR", short: "DR" },
-      { name: "Aikido Security", short: "AK" }
+      { name: "WAF", short: "WAF", generic: "shield-check" },
+      { name: "Backup and DR", short: "DR", generic: "database-backup" },
+      { name: "Aikido Security", short: "AK", file: "aikido.svg" }
     ]
   },
   {
@@ -138,7 +139,7 @@ window.SKILLS = [
       { name: "MongoDB", icon: "mongodb" },
       { name: "RabbitMQ", icon: "rabbitmq" },
       { name: "Apache Solr", icon: "apachesolr" },
-      { name: "JasperReports", short: "JR" }
+      { name: "JasperReports", short: "JR", file: "jasperreports.svg" }
     ]
   },
   {
@@ -154,8 +155,8 @@ window.SKILLS = [
     tone: "user",
     items: [
       { name: "Jira", icon: "jira" },
-      { name: "Agile and Scrum", short: "AG" },
-      { name: "OpenAI", short: "AI" }
+      { name: "Agile and Scrum", short: "AG", generic: "kanban" },
+      { name: "OpenAI", short: "AI", file: "openai.svg" }
     ]
   }
 ];
