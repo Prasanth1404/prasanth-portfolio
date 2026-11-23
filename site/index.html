@@ -22,6 +22,7 @@
         <li><a href="index.html" data-nav="home">Home</a></li>
         <li><a href="projects.html" data-nav="projects">Projects</a></li>
         <li><a href="index.html#experience" data-nav="experience">Experience</a></li>
+        <li><a href="skills.html" data-nav="skills">Skills</a></li>
         <li><a href="index.html#contact" data-nav="contact">Contact</a></li>
       </ul>
     </nav>
@@ -142,20 +143,16 @@
       </div>
     </section>
 
-    <section class="block reveal" id="skills" aria-labelledby="skills-h">
+    <section class="block" id="skills" aria-labelledby="skills-h">
       <div class="wrap">
-        <h2 class="title" id="skills-h">Skills</h2>
-        <dl class="skills" style="margin-top:20px">
-          <dt>AWS</dt><dd>EC2, VPC, S3, RDS, IAM, Lambda, ECS Fargate, ECR, EKS, ALB, Route 53, CloudFront, CloudWatch, Secrets Manager, ACM</dd>
-          <dt>Azure</dt><dd>Virtual Machines, VM Scale Sets, VNet, Application Gateway, Front Door, Azure Monitor, Entra ID</dd>
-          <dt>CI/CD and GitOps</dt><dd>Jenkins, GitHub Actions, Argo CD, AWS CodeDeploy, Git</dd>
-          <dt>Infrastructure as code</dt><dd>Terraform</dd>
-          <dt>Containers</dt><dd>Docker, Docker Compose, Kubernetes, Amazon EKS, Amazon ECS, Helm, ingress-nginx, cert-manager, Sealed Secrets</dd>
-          <dt>Monitoring</dt><dd>Prometheus, Grafana, ELK and EFK stacks, CloudWatch, Azure Monitor, Sentry</dd>
-          <dt>Linux and networking</dt><dd>Linux, Nginx, Apache, HAProxy, DNS, TCP/IP, SSL/TLS, OpenVPN, WAF</dd>
-          <dt>Scripting</dt><dd>Bash, Python</dd>
-          <dt>Languages</dt><dd>Tamil (native), English (proficient)</dd>
-        </dl>
+        <div class="section-head">
+          <div>
+            <h2 class="title" id="skills-h">Core tools</h2>
+            <p class="lede">The tools I use most. The skills page lists all of them, grouped.</p>
+          </div>
+          <a class="btn" href="skills.html">All skills →</a>
+        </div>
+        <ul class="skill-grid skill-strip" id="skill-strip"></ul>
       </div>
     </section>
 
@@ -182,6 +179,7 @@
     </div>
   </footer>
   <script src="js/projects-data.js"></script>
+  <script src="js/skills-data.js"></script>
   <script src="js/diagram.js"></script>
   <script src="js/site.js"></script>
 </body>

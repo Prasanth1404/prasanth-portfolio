@@ -83,15 +83,30 @@
       container.appendChild(card);
       var cover = card.querySelector(".card-cover");
       if (p.overview && window.Diagram) window.Diagram.mount(cover, p.overview, { compact: true });
-      // Optional screenshot cover: images/projects/<id>/cover.png replaces the mini diagram
-      var img = new Image();
-      img.onload = function () {
-        cover.innerHTML = "";
-        img.alt = "";
-        img.className = "cover-img";
-        cover.appendChild(img);
-      };
-      img.src = "images/projects/" + p.id + "/cover.png";
+      // Optional pictures: company logo (logo.png), else screenshot (cover.png), else the mini diagram
+      function tryCover() {
+        var img = new Image();
+        img.onload = function () {
+          cover.innerHTML = "";
+          img.alt = "";
+          img.className = "cover-img";
+          cover.appendChild(img);
+        };
+        img.src = "images/projects/" + p.id + "/cover.png";
+      }
+      if (p.category === "company") {
+        var logo = new Image();
+        logo.onload = function () {
+          cover.innerHTML = "";
+          cover.classList.add("logo-cover");
+          logo.alt = p.title + " logo";
+          cover.appendChild(logo);
+        };
+        logo.onerror = tryCover;
+        logo.src = "images/projects/" + p.id + "/logo.png";
+      } else {
+        tryCover();
+      }
     });
   }
 
@@ -105,6 +120,98 @@
   if (countEl) countEl.textContent = personal.length;
   var countCo = $("[data-company-count]");
   if (countCo) countCo.textContent = company.length;
+
+
+  /* ---------- Skills (skills page + home strip) ---------- */
+  var SKILLS = window.SKILLS || [];
+  function skillTile(item, tone) {
+    var li = document.createElement("li");
+    li.className = "skill tone-" + tone;
+    var box = document.createElement("span");
+    box.className = "skill-icon";
+    var name = document.createElement("span");
+    name.className = "skill-name";
+    name.textContent = item.name;
+    li.appendChild(box);
+    li.appendChild(name);
+
+    function mono() {
+      box.innerHTML = "";
+      var m = document.createElement("span");
+      m.className = "mono";
+      m.textContent = item.short || item.name.slice(0, 2);
+      box.appendChild(m);
+    }
+    function cdn() {
+      if (!item.icon) return mono();
+      var img = new Image();
+      img.alt = "";
+      img.loading = "lazy";
+      img.onerror = mono;
+      img.src = "https://cdn.simpleicons.org/" + item.icon;
+      box.innerHTML = "";
+      box.appendChild(img);
+    }
+    if (item.file) {
+      var own = new Image();
+      own.alt = "";
+      own.onload = function () { box.innerHTML = ""; box.appendChild(own); };
+      own.onerror = cdn;
+      own.src = "images/skills/" + item.file;
+      mono();
+    } else {
+      cdn();
+    }
+    return li;
+  }
+
+  var skillsRoot = $("#skills-root");
+  if (skillsRoot) {
+    var total = 0;
+    var filters = $("#skill-filters");
+    var allBtn = document.createElement("button");
+    allBtn.type = "button"; allBtn.className = "filter"; allBtn.textContent = "All";
+    allBtn.setAttribute("aria-pressed", "true");
+    filters.appendChild(allBtn);
+    var sections = [];
+    SKILLS.forEach(function (g, gi) {
+      total += g.items.length;
+      var sec = document.createElement("section");
+      sec.className = "skill-group reveal";
+      sec.innerHTML = '<div class="skill-head"><h2>' + esc(g.group) + '</h2><span>' + g.items.length + (g.items.length === 1 ? " tool" : " tools") + "</span></div>";
+      var ul = document.createElement("ul");
+      ul.className = "skill-grid";
+      g.items.forEach(function (it) { ul.appendChild(skillTile(it, g.tone)); });
+      sec.appendChild(ul);
+      skillsRoot.appendChild(sec);
+      sections.push(sec);
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "filter"; b.textContent = g.group;
+      b.setAttribute("aria-pressed", "false");
+      b.dataset.index = gi;
+      filters.appendChild(b);
+    });
+    var unique = {};
+    SKILLS.forEach(function (g) { g.items.forEach(function (it) { unique[it.name] = true; }); });
+    var countSk = $("[data-skill-count]");
+    if (countSk) countSk.textContent = Object.keys(unique).length;
+    filters.addEventListener("click", function (e) {
+      var b = e.target.closest(".filter");
+      if (!b) return;
+      filters.querySelectorAll(".filter").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      sections.forEach(function (sec, i) {
+        sec.hidden = b !== allBtn && String(i) !== b.dataset.index;
+        sec.classList.add("in");
+      });
+    });
+  }
+
+  var strip = $("#skill-strip");
+  if (strip) {
+    SKILLS.forEach(function (g) {
+      g.items.forEach(function (it) { if (it.top) strip.appendChild(skillTile(it, g.tone)); });
+    });
+  }
 
   /* ---------- Project page ---------- */
   var projectRoot = $("#project");
@@ -199,6 +306,16 @@
     }
 
     root.innerHTML = html;
+
+    // Logo next to the title (company projects)
+    var lg = new Image();
+    lg.onload = function () {
+      lg.className = "p-logo";
+      lg.alt = p.title + " logo";
+      var h1 = root.querySelector(".p-hero h1");
+      h1.parentNode.insertBefore(lg, h1);
+    };
+    lg.src = "images/projects/" + p.id + "/logo.png";
 
     if (p.overview) window.Diagram.mount($("#overview-diagram"), p.overview);
 
