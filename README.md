@@ -15,7 +15,7 @@ Visitor ──HTTPS──► CloudFront (ACM certificate, caching) ──► S3 
 | **Amazon S3** | Stores the HTML and images. Private: public access is blocked. |
 | **CloudFront** | Serves the site over HTTPS from edge locations and reads S3 through Origin Access Control. |
 | **ACM** | Free TLS certificate for `prasanth.space` and `www.prasanth.space`. |
-| **GitHub Actions** | Syncs `site/` to S3 and clears the CloudFront cache on every push to `main`. |
+| **GitHub Actions** | Syncs `site/` to S3 and clears the CloudFront cache on every push to `master`. |
 
 The S3 bucket, CloudFront distribution and certificate are built with Terraform in the [terraform](https://github.com/Prasanth1404/terraform) repository (`aws-portfolio/`).
 
