@@ -78,17 +78,33 @@
           '<h3><a href="project.html?id=' + encodeURIComponent(p.id) + '">' + esc(p.title) + "</a></h3>" +
           "<p>" + esc(p.short) + "</p>" +
           '<ul class="chips">' + p.tags.slice(0, 5).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
-          '<div class="meta"><span>' + esc(p.year) + " · " + p.repos.length + (p.repos.length === 1 ? " repository" : " repositories") + '</span><span class="go">View project →</span></div>' +
+          '<div class="meta"><span>' + (p.category === "company" ? esc(p.kind) : esc(p.year) + " · " + p.repos.length + (p.repos.length === 1 ? " repository" : " repositories")) + '</span><span class="go">View project →</span></div>' +
         "</div>";
       container.appendChild(card);
-      if (p.overview && window.Diagram) window.Diagram.mount(card.querySelector(".card-cover"), p.overview, { compact: true });
+      var cover = card.querySelector(".card-cover");
+      if (p.overview && window.Diagram) window.Diagram.mount(cover, p.overview, { compact: true });
+      // Optional screenshot cover: images/projects/<id>/cover.png replaces the mini diagram
+      var img = new Image();
+      img.onload = function () {
+        cover.innerHTML = "";
+        img.alt = "";
+        img.className = "cover-img";
+        cover.appendChild(img);
+      };
+      img.src = "images/projects/" + p.id + "/cover.png";
     });
   }
 
+  var personal = PROJECTS.filter(function (p) { return p.category !== "company"; });
+  var company = PROJECTS.filter(function (p) { return p.category === "company"; });
   var cardsHome = $("#project-cards");
-  if (cardsHome) renderCards(cardsHome, PROJECTS);
+  if (cardsHome) renderCards(cardsHome, personal);
+  var cardsCompany = $("#company-cards");
+  if (cardsCompany) renderCards(cardsCompany, company);
   var countEl = $("[data-project-count]");
-  if (countEl) countEl.textContent = PROJECTS.length;
+  if (countEl) countEl.textContent = personal.length;
+  var countCo = $("[data-company-count]");
+  if (countCo) countCo.textContent = company.length;
 
   /* ---------- Project page ---------- */
   var projectRoot = $("#project");
@@ -110,7 +126,8 @@
     }).join("");
 
     var html = "";
-    html += '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="projects.html">Projects</a> / <span>' + esc(p.title) + "</span></nav></div>";
+    var isCo = p.category === "company";
+    html += '<div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a> / <a href="projects.html' + (isCo ? "#kliotech" : "") + '">' + (isCo ? "KlioTech projects" : "Projects") + "</a> / <span>" + esc(p.title) + "</span></nav></div>";
 
     html += '<header class="p-hero"><div class="wrap">' +
       "<h1>" + esc(p.title) + "</h1>" +
@@ -121,8 +138,13 @@
       '<ul class="chips" style="margin-top:22px">' + p.tags.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>" +
       "</div></header>";
 
+    if (p.features && p.features.length) {
+      html += '<section class="block reveal"><div class="wrap">' +
+        '<h2 class="title">About the product</h2><ul class="ticks cols">' + p.features.map(function (h) { return "<li>" + md(h) + "</li>"; }).join("") + "</ul>" +
+        "</div></section>";
+    }
     html += '<section class="block reveal"><div class="wrap">' +
-      '<h2 class="title">What I built</h2><ul class="ticks cols">' + p.highlights.map(function (h) { return "<li>" + md(h) + "</li>"; }).join("") + "</ul>" +
+      '<h2 class="title">' + (isCo ? "My role" : "What I built") + '</h2><ul class="ticks cols">' + p.highlights.map(function (h) { return "<li>" + md(h) + "</li>"; }).join("") + "</ul>" +
       "</div></section>";
 
     if (p.overview) {
@@ -132,7 +154,7 @@
         '<div id="overview-diagram"></div></div></section>';
     }
 
-    html += '<section class="block reveal"><div class="wrap">' +
+    if (p.repos && p.repos.length) html += '<section class="block reveal"><div class="wrap">' +
       '<h2 class="title">Repositories</h2>' +
       '<p class="lede" style="margin-bottom:22px">Each repository has its own live diagram. Drag the boxes to explore; packets show how requests and deployments move.</p>' +
       '<div class="tabs" role="tablist" aria-label="Repositories">' +
@@ -168,8 +190,10 @@
         '<div class="gallery" id="gallery"></div></div></section>';
     }
 
-    var next = PROJECTS[(idx + 1) % PROJECTS.length];
-    if (PROJECTS.length > 1) {
+    var group = PROJECTS.filter(function (q) { return (q.category === "company") === isCo; });
+    var gi = group.indexOf(p);
+    var next = group[(gi + 1) % group.length];
+    if (group.length > 1) {
       html += '<section class="block"><div class="wrap"><a class="next-project" href="project.html?id=' + encodeURIComponent(next.id) + '">' +
         "<span><small>Next project</small><strong>" + esc(next.title) + '</strong></span><span class="go">→</span></a></div></section>';
     }
@@ -181,7 +205,7 @@
     // Repo diagrams: mount each one when its tab first opens
     var mounted = {};
     function mountRepo(i) {
-      if (mounted[i] || !p.repos[i].diagram) return;
+      if (mounted[i] || !p.repos[i] || !p.repos[i].diagram) return;
       mounted[i] = true;
       window.Diagram.mount($("#panel-" + i + " .repo-diagram"), p.repos[i].diagram);
     }

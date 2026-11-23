@@ -31,12 +31,21 @@
     <section class="hero" style="padding-bottom:8px">
       <div class="wrap">
         <h1 class="name" style="font-size:clamp(44px,7vw,80px)">Projects</h1>
-        <p class="intro"><span data-project-count>0</span> projects so far. Open one to see its repositories, a live diagram for each, the problems I solved, and screenshots.</p>
+        <p class="intro">My own projects, with repositories and live diagrams, and the KlioTech products I support at work.</p>
       </div>
     </section>
-    <section class="block" style="padding-top:24px">
+    <section class="block" style="padding-top:24px" aria-labelledby="mine-h">
       <div class="wrap">
+        <h2 class="title" id="mine-h">My projects</h2>
+        <p class="lede" style="margin-bottom:22px"><span data-project-count>0</span> personal projects. Open one to see its repositories, a live diagram for each, the problems I solved, and screenshots.</p>
         <div class="cards" id="project-cards"></div>
+      </div>
+    </section>
+    <section class="block" id="kliotech" aria-labelledby="kl-h">
+      <div class="wrap">
+        <h2 class="title" id="kl-h">KlioTech projects</h2>
+        <p class="lede" style="margin-bottom:22px"><span data-company-count>0</span> products I support at <a href="https://kliotech.com/" target="_blank" rel="noopener">KlioTech</a>. Each page covers the product and my role, not internal systems.</p>
+        <div class="cards cols-4" id="company-cards"></div>
       </div>
     </section>
   </main>

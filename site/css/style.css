@@ -167,6 +167,7 @@ body::before {
   gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
 }
 .facts div { background: var(--surface); padding: 16px 18px; }
+.facts div.wide { grid-column: 1 / -1; }
 .facts dt { font-size: 13px; color: var(--slate); }
 .facts dd { margin: 2px 0 0; font-weight: 600; font-size: 16px; line-height: 1.35; }
 .facts dd a { color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
@@ -222,6 +223,9 @@ h2.title {
 .card:hover { transform: translateY(-3px); border-color: var(--harbor); box-shadow: 0 12px 28px -16px color-mix(in srgb, var(--harbor) 45%, transparent); }
 .card-cover { aspect-ratio: 16 / 9; background: var(--raised); border-bottom: 1px solid var(--line); overflow: hidden; }
 .card-cover svg { width: 100%; height: 100%; }
+.card-cover .cover-img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.cards.cols-4 { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.cards.cols-4 .card h3 { font-size: 22px; }
 .card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .card h3 { font-family: var(--cond); font-weight: 700; font-size: 24px; line-height: 1.2; margin: 0; }
 .card h3 a { color: var(--ink); text-decoration: none; }
@@ -417,4 +421,12 @@ footer.site-footer .wrap { border-top: 1px solid var(--line); padding-top: 24px;
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
+}
+
+/* Resume viewer */
+.resume-frame { width: 100%; height: min(82vh, 1100px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); display: block; }
+.resume-mobile { display: none; }
+@media (max-width: 720px) {
+  .resume-frame { display: none; }
+  .resume-mobile { display: block; }
 }

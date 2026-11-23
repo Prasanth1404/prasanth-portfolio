@@ -8,9 +8,37 @@
   Wrap commands or file names in `backticks` to show them as code.
   ============================================================
 */
+/* Simplified support diagram used for company products.
+   It shows the kind of work I do, not the client's real architecture. */
+function supportDiagram(app) {
+  return {
+    title: "How I support " + app,
+    caption: "Simplified view of my role. Internal architecture is left out on purpose.",
+    height: 460,
+    nodes: [
+      { id: "dev", x: 110, y: 100, label: "Developers", sub: "push code", kind: "user" },
+      { id: "ci", x: 330, y: 100, label: "CI/CD pipeline", sub: "Jenkins, GitHub Actions", kind: "git", w: 180 },
+      { id: "app", x: 560, y: 100, label: app, sub: "application servers", kind: "aws", w: 176 },
+      { id: "db", x: 800, y: 100, label: "Database", sub: "backups, restore tests", kind: "data", w: 170 },
+      { id: "users", x: 110, y: 300, label: "Customers", sub: "web and POS", kind: "user" },
+      { id: "edge", x: 330, y: 300, label: "Reverse proxy + SSL", sub: "Nginx, HAProxy, Certbot", kind: "sec", w: 186 },
+      { id: "mon", x: 800, y: 300, label: "Monitoring", sub: "Prometheus, Grafana, CloudWatch", kind: "k8s", w: 210 }
+    ],
+    edges: [
+      { from: "dev", to: "ci" },
+      { from: "ci", to: "app", label: "deploy" },
+      { from: "app", to: "db" },
+      { from: "users", to: "edge" },
+      { from: "edge", to: "app", label: "HTTPS" },
+      { from: "app", to: "mon", label: "metrics, logs", dashed: true }
+    ]
+  };
+}
+
 window.PROJECTS = [
   {
     id: "eks-gitops",
+    category: "personal",
     title: "E-commerce platform on Amazon EKS with GitOps",
     short: "Terraform-built EKS cluster running an open-source shop, deployed entirely from Git with Argo CD.",
     summary: "An end-to-end deployment of the open-source Vendure e-commerce stack (Node.js API and Angular storefront) on AWS. The network and cluster are Terraform code, every deployment comes from Git through Argo CD, secrets are stored only in encrypted form, and new container images roll out automatically.",
@@ -272,6 +300,7 @@ window.PROJECTS = [
 
   {
     id: "portfolio-site",
+    category: "personal",
     title: "This website: S3 and CloudFront with HTTPS",
     short: "A private S3 bucket served through CloudFront with a free certificate, deployed by GitHub Actions.",
     summary: "The site you're reading. Files sit in a private S3 bucket that only one CloudFront distribution can read. CloudFront serves them over HTTPS with an ACM certificate, and a GitHub Actions workflow uploads changes and clears the cache on every push.",
@@ -337,8 +366,140 @@ window.PROJECTS = [
       { problem: "The root domain couldn't point at CloudFront.", fix: "DNS doesn't allow a CNAME on a root domain. Used Namecheap's ALIAS record for `@` and a normal CNAME for `www`." }
     ],
     gallery: [
-      { file: "dashboard.png", title: "CloudFront", text: "My Portfolio Dashboard Site." },
-      { file: "github-actions.png", title: "Deploy workflow", text: "Sync to S3 and cache invalidation." }
+      { file: "cloudfront.png", title: "Live site", text: "prasanth.space served from S3 through CloudFront." },
+      { file: "deploy-workflow.png", title: "Deploy workflow", text: "Sync to S3 and cache invalidation." }
     ]
+  },
+
+  /* ============================================================
+     KLIOTECH PROJECTS (work at KlioTech LLP)
+     Product descriptions are based on https://kliotech.com/our-work.
+     Check every "highlights" line and change it to match exactly what you did.
+     Keep internal details (servers, IPs, client data) out of this file.
+     ============================================================ */
+  {
+    id: "smart-fds",
+    category: "company",
+    company: "KlioTech LLP",
+    kind: "In-house product",
+    title: "Smart FDS",
+    short: "KlioTech's own SaaS platform for farms and dairies that deliver milk, produce and poultry to homes.",
+    summary: "Smart FDS is KlioTech's in-house SaaS product. Farms and dairies use it to run home delivery end to end: taking orders and subscriptions, planning routes, tracking stock, collecting payments, and giving drivers a mobile app.",
+    year: "2023 – present",
+    role: "DevOps, as part of the KlioTech team",
+    status: "Live product",
+    notice: "Company product. This page describes the product and my role only; internal systems are not shown.",
+    tags: ["AWS", "CI/CD", "Linux", "Nginx", "SSL automation", "Monitoring"],
+    links: [ { label: "Product website", url: "https://farmdeliverysoftware.com/" } ],
+    features: [
+      "Route optimisation and delivery planning",
+      "Subscriptions and recurring orders",
+      "Customer portal for managing orders",
+      "Real-time inventory tracking",
+      "Payments and billing",
+      "Mobile app for delivery drivers"
+    ],
+    highlights: [
+      "Keep production and staging environments running and patched on AWS.",
+      "Build and maintain Jenkins and GitHub Actions pipelines for releases without downtime.",
+      "Automate SSL certificate issuance and renewal with Certbot and Let's Encrypt.",
+      "Monitor health with Prometheus, Grafana and CloudWatch, and investigate incidents from logs.",
+      "Run backups and restores, and manage IAM access with least privilege."
+    ],
+    overview: supportDiagram("Smart FDS"),
+    repos: [], lessons: [], gallery: []
+  },
+
+  {
+    id: "orchid-pos",
+    category: "company",
+    company: "KlioTech LLP",
+    kind: "Client product",
+    title: "Orchid POS",
+    short: "A compliance-focused retail point-of-sale and eCommerce platform for firearm retailers in the US.",
+    summary: "Orchid POS is a retail point-of-sale system built for firearm retailers, with eCommerce, compliance record-keeping and serialised inventory. It also handles transfers, trade-ins, work orders, special orders, layaways and multi-location stores with live distributor feeds.",
+    year: "2023 – present",
+    role: "DevOps, as part of the KlioTech team",
+    status: "Live product",
+    notice: "Client product. This page describes the product and my role only; internal systems are not shown.",
+    tags: ["AWS", "CI/CD", "Linux", "HAProxy", "SSL automation", "Monitoring"],
+    links: [ { label: "Product website", url: "https://orchidadvisors.com/gun-store-pos-software/" } ],
+    features: [
+      "Serialised inventory tracking",
+      "Built-in compliance records and digital storage",
+      "Dealer and private-party transfers",
+      "Trade-ins and consignment",
+      "Web store with live distributor feeds",
+      "Work orders, special orders and layaways"
+    ],
+    highlights: [
+      "Operate the AWS servers and services behind the platform at 99.9% uptime.",
+      "Route traffic across frontend and backend servers with HAProxy and Nginx, with SSL on every endpoint.",
+      "Ship releases through automated Jenkins and GitHub Actions pipelines.",
+      "Monitor performance and errors, and coordinate fixes with the development team."
+    ],
+    overview: supportDiagram("Orchid POS"),
+    repos: [], lessons: [], gallery: []
+  },
+
+  {
+    id: "deal-memo-pro",
+    category: "company",
+    company: "KlioTech LLP",
+    kind: "Client product",
+    title: "Deal Memo Pro",
+    short: "A cloud system for modelling agencies to manage contracts, bookings, invoices and talent.",
+    summary: "Deal Memo Pro is a cloud-based order and project management system for modelling agencies. It brings contracts, job bookings, invoicing and talent coordination into one place.",
+    year: "2023 – present",
+    role: "DevOps, as part of the KlioTech team",
+    status: "Live product",
+    notice: "Client product. This page describes the product and my role only; internal systems are not shown.",
+    tags: ["AWS", "CI/CD", "Linux", "Nginx", "SSL automation", "Monitoring"],
+    links: [],
+    features: [
+      "Digital contract management",
+      "Talent booking and scheduling",
+      "Automated invoicing and payments",
+      "Client and project tracking"
+    ],
+    highlights: [
+      "Maintain the application servers and their availability on AWS.",
+      "Automate builds and deployments with CI/CD pipelines.",
+      "Manage SSL certificates, DNS and reverse proxy configuration.",
+      "Monitor the platform and respond to incidents."
+    ],
+    overview: supportDiagram("Deal Memo Pro"),
+    repos: [], lessons: [], gallery: []
+  },
+
+  {
+    id: "diveshop-360",
+    category: "company",
+    company: "KlioTech LLP",
+    kind: "Client product, handed over",
+    title: "DiveShop 360",
+    short: "Point-of-sale and business software for dive shops, supported until the client took it in-house.",
+    summary: "DiveShop 360 is point-of-sale and business management software for dive shops: retail, rentals, classes, certifications, trips and customer relationships in one platform, used by more than 1,000 dive shops. I supported it until the client moved it to their own team in December 2025.",
+    year: "2023 – Dec 2025",
+    role: "DevOps, as part of the KlioTech team",
+    status: "Handed over to the client, December 2025",
+    notice: "Client product, now run by the client's own team. This page describes the product and my role only.",
+    tags: ["AWS", "CI/CD", "Linux", "SSL automation", "Monitoring", "Handover"],
+    links: [ { label: "Product website", url: "https://diveshop360.com/" } ],
+    features: [
+      "Inventory for dive gear and equipment",
+      "Student certification tracking with PADI and SSI",
+      "Trip and travel bookings",
+      "Equipment rental and servicing",
+      "Customer relationship management",
+      "Integrated eCommerce"
+    ],
+    highlights: [
+      "Kept the platform's servers maintained, patched and monitored.",
+      "Ran deployments, SSL renewals, backups and health checks.",
+      "Supported the handover to the client's team in December 2025, including access transfer and documentation."
+    ],
+    overview: supportDiagram("DiveShop 360"),
+    repos: [], lessons: [], gallery: []
   }
 ];
