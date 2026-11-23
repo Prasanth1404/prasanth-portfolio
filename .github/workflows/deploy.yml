@@ -32,3 +32,9 @@ jobs:
           aws s3 sync site/ s3://${{ secrets.S3_BUCKET }}/ --delete \
             --exclude "*.html" \
             --cache-control "public, max-age=86400"
+
+      - name: Clear CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} \
+            --paths "/*"
