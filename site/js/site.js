@@ -10,6 +10,21 @@
   // `code` → <code>code</code>
   function md(s) { return esc(s).replace(/`([^`]+)`/g, "<code>$1</code>"); }
   function $(sel, root) { return (root || document).querySelector(sel); }
+  // Load the first image that exists from a list of URLs
+  function firstImage(urls, done, fail) {
+    var i = 0;
+    (function next() {
+      if (i >= urls.length) { if (fail) fail(); return; }
+      var img = new Image();
+      img.onload = function () { done(img); };
+      img.onerror = next;
+      img.src = urls[i++];
+    })();
+  }
+  function logoUrls(p) {
+    var base = "images/projects/" + p.id + "/logo.";
+    return [base + "svg", base + "png", base + "webp", base + "jpg"];
+  }
 
   /* ---------- Shared: nav, year, avatar, reveal ---------- */
   var page = document.body.getAttribute("data-page");
@@ -95,15 +110,13 @@
         img.src = "images/projects/" + p.id + "/cover.png";
       }
       if (p.category === "company") {
-        var logo = new Image();
-        logo.onload = function () {
+        firstImage(logoUrls(p), function (logo) {
           cover.innerHTML = "";
           cover.classList.add("logo-cover");
+          if (p.logoBackground) cover.style.background = p.logoBackground;
           logo.alt = p.title + " logo";
           cover.appendChild(logo);
-        };
-        logo.onerror = tryCover;
-        logo.src = "images/projects/" + p.id + "/logo.png";
+        }, tryCover);
       } else {
         tryCover();
       }
@@ -317,15 +330,14 @@
 
     root.innerHTML = html;
 
-    // Logo next to the title (company projects)
-    var lg = new Image();
-    lg.onload = function () {
+    // Logo above the title
+    firstImage(logoUrls(p), function (lg) {
       lg.className = "p-logo";
       lg.alt = p.title + " logo";
+      if (p.logoBackground) { lg.style.background = p.logoBackground; lg.style.borderColor = p.logoBackground; }
       var h1 = root.querySelector(".p-hero h1");
       h1.parentNode.insertBefore(lg, h1);
-    };
-    lg.src = "images/projects/" + p.id + "/logo.png";
+    });
 
     if (p.overview) window.Diagram.mount($("#overview-diagram"), p.overview);
 

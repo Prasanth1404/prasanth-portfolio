@@ -4,6 +4,8 @@
   To add a new project: copy one object in the list below,
   give it a new unique "id", and fill in the fields.
   Screenshots go in images/projects/<id>/ (missing files are hidden).
+  Logo: images/projects/<id>/logo.svg, .png, .webp or .jpg (the extension must match the real file type).
+  logoBackground: optional colour behind a logo that has its own solid background.
   Diagram node kinds: user, git, aws, k8s, data, sec
   Wrap commands or file names in `backticks` to show them as code.
   ============================================================
@@ -445,6 +447,7 @@ window.PROJECTS = [
   {
     id: "deal-memo-pro",
     category: "company",
+    logoBackground: "#000000",   // the DMP logo is white on black, so the tile matches it
     company: "KlioTech LLP",
     kind: "Client product",
     title: "Deal Memo Pro",

@@ -98,7 +98,7 @@ window.SKILLS = [
       { name: "CloudWatch", short: "CW", file: "aws-cloudwatch.svg" },
       { name: "Azure Monitor", short: "MON", file: "azure-monitor.svg" },
       { name: "Sentry", icon: "sentry" },
-      { name: "StatusCake", short: "SC", file: "statuscake.svg" }
+      { name: "StatusCake", short: "SC", file: "statuscake.webp" }
     ]
   },
   {
@@ -107,11 +107,11 @@ window.SKILLS = [
     items: [
       { name: "Linux", icon: "linux", top: true },
       { name: "Ubuntu", icon: "ubuntu" },
-      { name: "Windows Server", short: "WS", file: "windows-server.svg" },
+      { name: "Windows Server", short: "WS", file: "windows-server.webp" },
       { name: "Nginx", icon: "nginx", top: true },
       { name: "Apache", icon: "apache" },
       { name: "HAProxy", short: "HA", file: "haproxy.svg" },
-      { name: "OpenLiteSpeed", short: "OLS", file: "openlitespeed.svg" },
+      { name: "OpenLiteSpeed", short: "OLS", file: "openlitespeed.png" },
       { name: "PM2", icon: "pm2" }
     ]
   },
@@ -139,7 +139,7 @@ window.SKILLS = [
       { name: "MongoDB", icon: "mongodb" },
       { name: "RabbitMQ", icon: "rabbitmq" },
       { name: "Apache Solr", icon: "apachesolr" },
-      { name: "JasperReports", short: "JR", file: "jasperreports.svg" }
+      { name: "JasperReports", short: "JR", file: "jasperreports.png" }
     ]
   },
   {
