@@ -4,103 +4,152 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Prasanth S – DevOps Engineer, Chennai</title>
-  <meta name="description" content="Prasanth S, AWS DevOps Engineer in Chennai: Terraform, Amazon EKS, Argo CD GitOps, GitHub Actions, Docker and Kubernetes.">
-  <meta property="og:title" content="Prasanth S – DevOps Engineer, Chennai">
-  <meta property="og:description" content="Prasanth S, AWS DevOps Engineer in Chennai: Terraform, Amazon EKS, Argo CD GitOps, GitHub Actions, Docker and Kubernetes.">
+  <meta name="description" content="Prasanth S, Associate DevOps Engineer in Chennai: AWS, Azure, Kubernetes (EKS), Terraform, Argo CD GitOps, CI/CD and observability.">
+  <meta property="og:title" content="Prasanth S – DevOps Engineer">
+  <meta property="og:description" content="AWS, Azure, Kubernetes, Terraform and GitOps.">
   <meta property="og:image" content="https://prasanth.space/images/profile.jpg">
+  <meta name="theme-color" content="#07070A">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="home">
+  <div id="loader" aria-hidden="true">
+    <span class="count">0</span>
+    <p class="tag">The <em>engineer</em> who turns <em>code</em><br>into <em>reliable infrastructure</em></p>
+    <span class="bar"></span>
+  </div>
+  <canvas id="fx" aria-hidden="true"></canvas>
   <header class="site-header">
-    <nav class="wrap nav" aria-label="Main">
-      <a class="brand" href="index.html"><img src="favicon.svg" alt="" width="30" height="30"><span>Prasanth S</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="index.html">Prasanth<b>.</b></a>
       <ul class="nav-links">
         <li><a href="index.html" data-nav="home">Home</a></li>
         <li><a href="projects.html" data-nav="projects">Projects</a></li>
-        <li><a href="index.html#experience" data-nav="experience">Experience</a></li>
+        <li><a href="index.html#about" data-nav="about">About</a></li>
         <li><a href="skills.html" data-nav="skills">Skills</a></li>
-        <li><a href="index.html#contact" data-nav="contact">Contact</a></li>
+        <li><a href="resume.html" data-nav="resume">Resume</a></li>
       </ul>
+      <a class="nav-cta" href="index.html#contact">Let's talk</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <div class="hero-top">
-            <div class="avatar"><img src="images/profile.jpg" alt="Prasanth S" width="112" height="112">PS</div>
-            <span class="status-pill">Open to DevOps roles</span>
-          </div>
-          <h1 class="name">Prasanth S</h1>
-          <p class="role">DevOps Engineer building <span class="typed" data-typed='["on AWS with Terraform","GitOps with Argo CD","on Amazon EKS","CI/CD with GitHub Actions"]'>on AWS with Terraform</span></p>
-          <p class="intro">I run production infrastructure on AWS: 15+ servers in a microservices setup kept at 99.9% uptime, CI/CD pipelines in Jenkins and GitHub Actions, and SSL renewal automated for more than 1,000 domains.</p>
-          <div class="actions">
-            <a class="btn primary" href="tel:+916379811820"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call me</a>
-            <a class="btn" href="mailto:sgprasanth2523@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email</a>
-            <a class="btn" href="resume.html" data-resume hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>View resume</a>
-            <a class="btn" href="projects.html">See projects</a>
-          </div>
-        </div>
-        <dl class="facts">
-          <div><dt>Experience</dt><dd class="big">5.5+ years</dd></div>
-          <div><dt>Production uptime</dt><dd class="big">99.9%</dd></div>
-          <div><dt>Phone</dt><dd><a href="tel:+916379811820">+91 63798 11820</a></dd></div>
-          <div><dt>Based in</dt><dd>Ponneri, Chennai</dd></div>
-          <div class="wide"><dt>Email</dt><dd><a href="mailto:sgprasanth2523@gmail.com">sgprasanth2523@gmail.com</a></dd></div>
-          <div class="wide"><dt>Open to</dt><dd>Hybrid, on-site and remote roles in Chennai, Bangalore, Hyderabad, Coimbatore</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="block reveal" aria-labelledby="path-h">
+    <section class="hero3d" id="top">
       <div class="wrap">
-        <h2 class="title" id="path-h">Career pipeline</h2>
-        <p class="lede" style="margin-bottom:20px">Each stage built on the one before it.</p>
-        <div class="pipeline">
-          <ol class="stages">
-            <li class="stage" style="--i:0"><span class="dot" aria-hidden="true"></span><strong>Desktop Support Engineer</strong><span>Fussion BPO Services, 2021–2023</span><span class="st">Passed</span></li>
-            <li class="stage" style="--i:1"><span class="dot" aria-hidden="true"></span><strong>System Administrator</strong><span>KlioTech LLP, 2023–2025</span><span class="st">Passed</span></li>
-            <li class="stage current" style="--i:2"><span class="dot" aria-hidden="true"></span><strong>Associate DevOps Engineer</strong><span>KlioTech LLP, since December 2025</span><span class="st">Running</span></li>
-          </ol>
+        <div class="hero-frame" data-tilt>
+          <svg class="hero-lines" viewBox="0 0 1000 560" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M460 0 L300 560" stroke="rgba(255,255,255,0.35)" stroke-width="1.2" fill="none"/>
+            <path d="M620 0 L780 560" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none"/>
+            <path d="M640 120 L1000 300" stroke="rgba(255,46,77,0.5)" stroke-width="1" fill="none"/>
+          </svg>
+          <div class="hero-copy">
+            <p class="hero-eyebrow">AWS · Azure · Kubernetes · Terraform</p>
+            <h1 class="hero-name">Prasanth</h1>
+            <p class="hero-role">Associate DevOps Engineer<span>/</span>Cloud &amp; SRE</p>
+            <p class="hero-intro">I keep a 15+ server microservices platform on AWS and Azure at 99.9% uptime, build CI/CD pipelines, and deploy to Kubernetes with GitOps.</p>
+            <div class="actions">
+              <a class="btn primary" href="#projects">Explore my work</a>
+              <a class="btn" href="#contact">Get in touch</a>
+              <a class="btn" href="resume.html" data-resume hidden>View resume</a>
+            </div>
+          </div>
+          <div class="hero-portrait"><span class="glow" aria-hidden="true"></span></div>
+        </div>
+
+        <div class="stats">
+          <div class="stat glass"><div class="num" data-count="5.5" data-suffix="+">0</div><p>Years in IT</p></div>
+          <div class="stat glass"><div class="num" data-count="99.9" data-suffix="%">0</div><p>Production uptime</p></div>
+          <div class="stat glass"><div class="num" data-count="1000" data-suffix="+">0</div><p>Domains on auto-SSL</p></div>
+          <div class="stat glass"><div class="num" data-count="15" data-suffix="+">0</div><p>Servers I run</p></div>
         </div>
       </div>
     </section>
 
     <section class="block" id="projects" aria-labelledby="proj-h">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2 class="title" id="proj-h">My projects</h2>
-            <p class="lede">Personal projects, each with its own page and live, interactive diagrams for every repository.</p>
-          </div>
-          <a class="btn" href="projects.html">All projects →</a>
+        <span class="kicker">Featured work</span>
+        <h2 class="title3d" id="proj-h">Projects<span>.</span></h2>
+        <div class="title-rule"></div>
+        <div class="ring-stage" id="ring-stage" tabindex="0" aria-label="Projects carousel. Drag, or use the arrow keys, to rotate.">
+          <div class="ring" id="ring"></div>
         </div>
-        <div class="cards" id="project-cards"></div>
+        <div class="ring-controls">
+          <button class="ring-btn" id="ring-prev" type="button" aria-label="Previous project">←</button>
+          <span class="ring-hint">Drag to rotate · tap a card to open</span>
+          <button class="ring-btn" id="ring-next" type="button" aria-label="Next project">→</button>
+        </div>
+        <p style="text-align:center;margin-top:22px"><a class="btn" href="projects.html">All projects, grouped →</a></p>
       </div>
     </section>
 
-    <section class="block" id="kliotech" aria-labelledby="kl-h">
+    <section class="block" id="about" aria-labelledby="about-h">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2 class="title" id="kl-h">KlioTech projects</h2>
-            <p class="lede">Products I support at work, as part of the KlioTech team. Descriptions cover the product and my role, not internal systems.</p>
+        <span class="kicker">Engineer · Operator · Builder</span>
+        <h2 class="title3d" id="about-h">About me<span>.</span></h2>
+        <div class="title-rule"></div>
+        <div class="about-grid">
+          <div class="about-card glass reveal">
+            <p>I'm an Associate DevOps Engineer at KlioTech in Chennai, promoted from System Administrator in December 2025. I run AWS and Azure infrastructure for in-house and client products, and I care most about calm releases and boring, reliable production.</p>
+            <p>Before DevOps I spent two and a half years in desktop support, which is where I learned to troubleshoot anything methodically.</p>
+            <h4>Technologies</h4>
+            <ul class="chips">
+              <li>AWS</li><li>Azure</li><li>Kubernetes (EKS)</li><li>Terraform</li><li>Docker</li><li>Helm</li><li>Argo CD</li><li>Jenkins</li><li>GitHub Actions</li><li>Prometheus</li><li>Grafana</li><li>Python</li><li>Bash</li>
+            </ul>
+            <h4>Areas of focus</h4>
+            <ul class="chips">
+              <li>CI/CD and GitOps</li><li>Infrastructure as code</li><li>Observability and on-call</li><li>Cloud security</li><li>Backup and recovery</li>
+            </ul>
           </div>
-          <a class="btn" href="https://kliotech.com/" target="_blank" rel="noopener">kliotech.com ↗</a>
+          <div class="badge-wrap" aria-label="ID badge. Drag it to swing.">
+            <svg width="20" height="20" viewBox="0 0 20 20" style="position:absolute;top:-6px;left:calc(50% - 10px)" aria-hidden="true"><circle cx="10" cy="10" r="6" fill="#2A2A33" stroke="rgba(255,255,255,0.25)"/></svg>
+            <div class="badge-swing" id="badge-swing">
+              <svg class="badge-strap" id="badge-strap" viewBox="0 0 120 150" aria-hidden="true">
+                <path d="M60 2 L38 142" stroke="#FF2E4D" stroke-width="7" stroke-linecap="round"/>
+                <path d="M60 2 L82 142" stroke="#B3132D" stroke-width="7" stroke-linecap="round"/>
+              </svg>
+              <div class="badge" id="badge">
+                <div class="bhead"><b>Prasanth<i>.</i></b><span>ID · 2026</span></div>
+                <div class="bphoto"><img src="images/profile.jpg" alt="Prasanth S"></div>
+                <div class="bname">Prasanth S</div>
+                <div class="brole">Associate DevOps Engineer</div>
+                <div class="bcode" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="cards cols-4" id="company-cards"></div>
       </div>
     </section>
 
-    <section class="block reveal" id="experience" aria-labelledby="exp-h">
+    <section class="block" id="services" aria-labelledby="svc-h">
       <div class="wrap">
-        <h2 class="title" id="exp-h">Experience</h2>
-        <p class="lede" style="margin-bottom:20px">5.5+ years in IT, the last three running AWS infrastructure for a production microservices environment.</p>
+        <span class="kicker">What I do</span>
+        <h2 class="title3d" id="svc-h">Capabilities<span>.</span></h2>
+        <div class="title-rule"></div>
+        <ul class="svc-list">
+          <li class="svc glass reveal"><span class="n">01</span><div><h3>Cloud infrastructure on AWS and Azure</h3><p>VPCs, compute, databases and load balancers, provisioned as code.</p></div><span class="tags">EC2 · EKS · RDS · VMSS · Terraform</span></li>
+          <li class="svc glass reveal"><span class="n">02</span><div><h3>CI/CD and GitOps</h3><p>Pipelines with tests, approvals and rollback; deployments straight from Git.</p></div><span class="tags">Jenkins · GitHub Actions · Argo CD</span></li>
+          <li class="svc glass reveal"><span class="n">03</span><div><h3>Kubernetes and containers</h3><p>Docker images, Helm releases, ingress, storage and troubleshooting.</p></div><span class="tags">Docker · Kubernetes · Helm</span></li>
+          <li class="svc glass reveal"><span class="n">04</span><div><h3>Observability and on-call</h3><p>Dashboards and alerts, incident response and root cause analysis.</p></div><span class="tags">Prometheus · Grafana · ELK</span></li>
+          <li class="svc glass reveal"><span class="n">05</span><div><h3>Security and reliability</h3><p>Least-privilege access, secrets, TLS for 1,000+ domains, tested restores.</p></div><span class="tags">IAM · Entra ID · Let's Encrypt</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="experience" aria-labelledby="exp-h">
+      <div class="wrap">
+        <span class="kicker">Career pipeline</span>
+        <h2 class="title3d" id="exp-h">Experience<span>.</span></h2>
+        <div class="title-rule"></div>
+        <div class="pipeline reveal" style="margin-bottom:26px">
+          <ol class="stages">
+            <li class="stage" style="--i:0"><span class="dot" aria-hidden="true"></span><strong>Desktop Support Engineer</strong><span>Fussion BPO Services, 2021–2023</span><span class="st">Passed</span></li>
+            <li class="stage" style="--i:1"><span class="dot" aria-hidden="true"></span><strong>System Administrator</strong><span>KlioTech LLP, 2023–2025</span><span class="st">Passed</span></li>
+            <li class="stage current" style="--i:2"><span class="dot" aria-hidden="true"></span><strong>Associate DevOps Engineer</strong><span>KlioTech LLP, since December 2025</span><span class="st">Running</span></li>
+          </ol>
+        </div>
         <ol class="jobs">
           <li class="job">
             <div class="when">Dec 2025 – present<span>Chennai, remote</span></div>
@@ -148,28 +197,39 @@
 
     <section class="block" id="skills" aria-labelledby="skills-h">
       <div class="wrap">
-        <div class="section-head">
-          <div>
-            <h2 class="title" id="skills-h">Core tools</h2>
-            <p class="lede">The tools I use most. The skills page lists all of them, grouped.</p>
-          </div>
-          <a class="btn" href="skills.html">All skills →</a>
-        </div>
+        <span class="kicker">Tools I use most</span>
+        <h2 class="title3d" id="skills-h">Tech stack<span>.</span></h2>
+        <div class="title-rule"></div>
         <ul class="skill-grid skill-strip" id="skill-strip"></ul>
+        <p style="text-align:center;margin-top:22px"><a class="btn" href="skills.html">All skills →</a></p>
       </div>
     </section>
 
-    <section class="block reveal" id="contact" aria-labelledby="contact-h">
+    <section class="block" id="contact" aria-labelledby="contact-h">
       <div class="wrap">
-        <h2 class="title" id="contact-h">Let's talk</h2>
-        <p class="lede" style="margin-bottom:18px">I'm looking for DevOps and cloud engineering roles in Chennai, Bangalore, Hyderabad or Coimbatore, or remote.</p>
-        <div class="contact-grid">
-          <a class="contact-item" href="tel:+916379811820"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><span><small>Phone</small><strong>+91 63798 11820</strong></span></a>
-          <a class="contact-item" href="mailto:sgprasanth2523@gmail.com"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span><small>Email</small><strong>sgprasanth2523@gmail.com</strong></span></a>
-          <a class="contact-item" href="https://linkedin.com/in/prasanth-sg" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span><span><small>LinkedIn</small><strong>in/prasanth-sg</strong></span></a>
-          <a class="contact-item" href="https://github.com/Prasanth1404" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.3 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.8c0 5.4 3.3 6.6 6.4 7A3.4 3.4 0 0 0 9 18.1V22"/></svg></span><span><small>GitHub</small><strong>Prasanth1404</strong></span></a>
-          <div class="contact-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><small>Location</small><strong>Ponneri, Chennai 601205</strong></span></div>
-          <div class="contact-item"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span><span><small>Work mode</small><strong>Hybrid, on-site, remote</strong></span></div>
+        <span class="kicker">Let's build something reliable</span>
+        <h2 class="title3d" id="contact-h">Contact<span>.</span></h2>
+        <div class="title-rule"></div>
+        <form class="contact-card glass" id="contact-form">
+          <div class="contact-top">
+            <div class="who"><span class="ic"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><span><small>Email me directly</small><a href="mailto:sgprasanth2523@gmail.com">sgprasanth2523@gmail.com</a></span></div>
+            <span class="avail">Open to DevOps roles</span>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required placeholder="Your name"></div>
+            <div class="field"><label for="f-mail">Your email</label><input id="f-mail" name="email" type="email" autocomplete="email" placeholder="you@company.com"></div>
+            <div class="field full"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required placeholder="Tell me about the role or project"></textarea></div>
+          </div>
+          <div class="form-foot">
+            <small>Opens your email app with the message filled in.</small>
+            <button class="btn primary" type="submit">Send message</button>
+          </div>
+        </form>
+        <div class="quick-links">
+          <a href="tel:+916379811820">+91 63798 11820</a>
+          <a href="https://linkedin.com/in/prasanth-sg" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/Prasanth1404" target="_blank" rel="noopener">GitHub</a>
+          <span style="color:var(--slate)">Ponneri, Chennai · Hybrid, on-site or remote</span>
         </div>
       </div>
     </section>
@@ -185,5 +245,6 @@
   <script src="js/skills-data.js"></script>
   <script src="js/diagram.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/fx.js"></script>
 </body>
 </html>

@@ -368,8 +368,8 @@ window.PROJECTS = [
       { problem: "The root domain couldn't point at CloudFront.", fix: "DNS doesn't allow a CNAME on a root domain. Used Namecheap's ALIAS record for `@` and a normal CNAME for `www`." }
     ],
     gallery: [
-      { file: "cloudfront.png", title: "Live site", text: "prasanth.space served from S3 through CloudFront." },
-      { file: "deploy-workflow.png", title: "Deploy workflow", text: "Sync to S3 and cache invalidation." }
+      { file: "dashboard.png", title: "Live site", text: "prasanth.space served from S3 through CloudFront." },
+      { file: "github-actions.png", title: "Deploy workflow", text: "Sync to S3 and cache invalidation." }
     ]
   },
 
